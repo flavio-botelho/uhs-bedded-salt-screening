@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the accompanying paper (listed under 'preferred-citation')."
+title: "h2-bedded-salt-screening: screening workflows for underground hydrogen storage in Aptian bedded-salt evaporites"
+authors:
+  - family-names: "Botelho"
+    given-names: "Flávio"
+    email: "flavio.c.botelho@gmail.com"
+version: "0.1.0"
+date-released: "2026-04-20"
+license: MIT
+repository-code: "https://github.com/flavio/uhs-bedded-salt-screening"
+keywords:
+  - "underground hydrogen storage"
+  - "bedded salt"
+  - "Paripueira evaporites"
+  - "Maceió Formation"
+  - "Alagoas Sub-basin"
+  - "favorability mapping"
+  - "MCDA"
+preferred-citation:
+  type: article
+  title: "Testing safety criteria for planning underground hydrogen storage in bedded salt deposits: the Fazenda Guindaste onshore salt basin, Northeast Brazil"
+  authors:
+    - family-names: "Botelho"
+      given-names: "Flávio"
+  year: 2026
+  notes: "Manuscript submitted; update with journal, volume, pages and DOI once accepted."

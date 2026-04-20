@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "h2-bedded-salt-screening"
+version = "0.1.0"
+description = "Screening workflows for underground hydrogen storage in the Aptian Paripueira bedded-salt evaporites, Fazenda Guindaste Low, Alagoas Sub-basin (NE Brazil)."
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Flávio Botelho", email = "flavio.c.botelho@gmail.com" }]
+requires-python = ">=3.11,<3.13"
+keywords = [
+    "hydrogen storage",
+    "bedded salt",
+    "evaporites",
+    "MCDA",
+    "favorability",
+    "cavern",
+    "geoscience",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.3",
+    "scipy>=1.15",
+    "matplotlib>=3.10",
+    "rasterio>=1.4",
+    "geopandas>=1.0",
+    "shapely>=2.0",
+    "trimesh>=4.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.urls]
+Repository = "https://github.com/flavio/uhs-bedded-salt-screening"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["h2_bedded_salt_screening*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]
