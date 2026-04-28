@@ -8,7 +8,7 @@ authors:
 version: "0.1.0"
 date-released: "2026-04-20"
 license: MIT
-repository-code: "https://github.com/flavio/uhs-bedded-salt-screening"
+repository-code: "https://github.com/flavio-botelho/uhs-bedded-salt-screening"
 keywords:
   - "underground hydrogen storage"
   - "bedded salt"

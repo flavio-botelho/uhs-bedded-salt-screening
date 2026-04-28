@@ -44,7 +44,7 @@ dependencies = [
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [project.urls]
-Repository = "https://github.com/flavio/uhs-bedded-salt-screening"
+Repository = "https://github.com/flavio-botelho/uhs-bedded-salt-screening"
 
 [tool.setuptools.packages.find]
 where = ["src"]
