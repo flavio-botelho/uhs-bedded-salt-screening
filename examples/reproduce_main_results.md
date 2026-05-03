@@ -12,14 +12,14 @@ pixi install
 
 ## 1 — Place derived data
 
-Copy the derived products into `data/derived/` following the layout in [`docs/data_dictionary.md`](../docs/data_dictionary.md). Raw ANP/SGB files are not needed for reproduction; only the derived CSVs, ASCII grids and shapefiles are.
+Copy the derived products into `data/derived/` following the layout in [`docs/data_dictionary.md`](../docs/data_dictionary.md). Raw ANP/SGB files are not needed for reproduction; only the derived CSVs, ASCII grids, fault meshes and urban polygons are.
 
 Minimum required files:
 
 - `data/derived/wells/wells_data_corrected.csv`
 - `data/derived/wells/well_xy.csv`
 - `data/derived/grids/*.asc`  (one set per evaporitic cycle)
-- `data/derived/faults/*.shp`
+- `data/derived/faults/*.obj`
 - `data/derived/urban/urban_areas.shp`
 
 ## 2 — Regenerate cycle aggregation (optional; included as a derived file)
@@ -48,7 +48,11 @@ Writes `outputs/cavern_optimization/optimal_cavern_intervals_analysis.csv` and `
 
 ## 5 — W3 · Conceptual field layout
 
-Depends on W1 (`favorability_Cycle_2b.asc`) and implicitly on the reference-well Pareto solution hard-coded in `conceptual_field_layout/config.py`.
+Depends on W1 (`favorability_Cycle_2b.asc`) and on the reference scenarios
+encoded in `src/h2_bedded_salt_screening/conceptual_field_layout/config.py`.
+Those scenarios were derived from the W2 Pareto analysis for the reference
+well/cycle pair used in the study, but the current W3 runner does not read
+`pareto_frontier.csv` directly.
 
 ```bash
 PYTHONPATH=src:. pixi run python run/run_field_layout.py
@@ -58,7 +62,7 @@ Writes `outputs/field_layout/caverns_pareto_HD_0.75.shp` and `caverns_pareto_HD_
 
 ## 6 — W4 · H₂ effective energy
 
-Depends on W2 (Pareto CSV) and W3 (cavern shapefiles).
+Depends on W2 (`pareto_frontier.csv`) and W3 (cavern shapefiles).
 
 ```bash
 PYTHONPATH=src:. pixi run python run/run_h2_energy.py

@@ -17,9 +17,15 @@ The package exposes four sequential workflows. Each lives in its own subpackage 
 | W3 | Conceptual cavern field layout (hex packing) | `conceptual_field_layout` | `run/run_field_layout.py` |
 | W4 | H₂ effective energy | `h2_effective_energy` | `run/run_h2_energy.py` |
 
-Data flow: **W1 → favorability grids; W2 → per-well Pareto frontier; W3 consumes W1 + W2 → cavern shapefiles; W4 consumes W2 + W3 → energy summary.**
+An auxiliary preprocessing runner, `run/run_cycles_aggregation.py`, regenerates
+`data/derived/intermediates/cycles_data.csv` from
+`data/derived/wells/wells_data_corrected.csv` for use in W1.
 
-See [`docs/methodology_mapping.md`](docs/methodology_mapping.md) for how each code module maps to the paper's methodology, and [`docs/data_dictionary.md`](docs/data_dictionary.md) for the expected inputs and outputs.
+Data flow: **cycle aggregation → W1 favorability grids; W2 → per-well Pareto frontier; W3 consumes the W1 Cycle 2b favorability grid plus reference W2 scenarios encoded in `conceptual_field_layout/config.py`; W4 consumes W2 + W3 → energy summary.**
+See [`docs/methodology_mapping.md`](docs/methodology_mapping.md) for how each
+code module maps to the paper's methodology, and
+[`docs/data_dictionary.md`](docs/data_dictionary.md) for the expected inputs
+and outputs.
 
 ## Installation
 
@@ -40,6 +46,9 @@ pip install -e .
 All runners read their paths from the matching module in `configs/`. Edit those files to point at your local `data/` and `outputs/` layout, then run them either through Pixi or through a regular Python environment:
 
 ```bash
+# Optional preprocessing step for W1 inputs
+PYTHONPATH=src:. pixi run python run/run_cycles_aggregation.py
+
 # With Pixi
 PYTHONPATH=src:. pixi run python run/run_regional_favorability.py
 PYTHONPATH=src:. pixi run python run/run_well_cavern_optimization.py
@@ -47,6 +56,7 @@ PYTHONPATH=src:. pixi run python run/run_field_layout.py
 PYTHONPATH=src:. pixi run python run/run_h2_energy.py
 
 # With a regular Python environment
+PYTHONPATH=src:. python run/run_cycles_aggregation.py
 PYTHONPATH=src:. python run/run_regional_favorability.py
 PYTHONPATH=src:. python run/run_well_cavern_optimization.py
 PYTHONPATH=src:. python run/run_field_layout.py
@@ -58,7 +68,7 @@ See [`examples/reproduce_main_results.md`](examples/reproduce_main_results.md) f
 ## Data
 
 - `data/raw/` — **not versioned**. Raw well and structural data come from Brazil's public repositories (ANP / SGB REATE). See `docs/data_dictionary.md` for fetch instructions.
-- `data/derived/` — author-generated, reproducible products required by the workflows (cycle tables, favorability input grids, fault and urban shapefiles, well coordinates).
+- `data/derived/` — author-generated, reproducible products required by the workflows (cycle tables, favorability input grids, fault meshes, urban polygons, well coordinates).
 - `data/sample/` — optional lightweight samples for smoke tests.
 - `outputs/` — generally gitignored; created by the runners.
 
