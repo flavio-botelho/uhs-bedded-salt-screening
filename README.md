@@ -23,7 +23,9 @@ See [`docs/methodology_mapping.md`](docs/methodology_mapping.md) for how each co
 
 ## Installation
 
-The project is developed with [Pixi](https://pixi.sh/) on Linux. A `pyproject.toml` is also provided for pip-based installs.
+The project is developed with [Pixi](https://pixi.sh/) on Linux, which
+reproduces the authored environment. A standard pip-based installation is also
+supported for users who prefer a conventional Python workflow.
 
 ```bash
 # Option A — Pixi (recommended, matches the authored environment)
@@ -35,13 +37,20 @@ pip install -e .
 
 ## Running the workflows
 
-All runners read their paths from the matching module in `configs/`. Edit those files to point at your local `data/` and `outputs/` layout, then:
+All runners read their paths from the matching module in `configs/`. Edit those files to point at your local `data/` and `outputs/` layout, then run them either through Pixi or through a regular Python environment:
 
 ```bash
+# With Pixi
 PYTHONPATH=src:. pixi run python run/run_regional_favorability.py
 PYTHONPATH=src:. pixi run python run/run_well_cavern_optimization.py
 PYTHONPATH=src:. pixi run python run/run_field_layout.py
 PYTHONPATH=src:. pixi run python run/run_h2_energy.py
+
+# With a regular Python environment
+PYTHONPATH=src:. python run/run_regional_favorability.py
+PYTHONPATH=src:. python run/run_well_cavern_optimization.py
+PYTHONPATH=src:. python run/run_field_layout.py
+PYTHONPATH=src:. python run/run_h2_energy.py
 ```
 
 See [`examples/reproduce_main_results.md`](examples/reproduce_main_results.md) for a full reproduction recipe.

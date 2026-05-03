@@ -37,11 +37,6 @@ configs/local_config.py
 .vscode/
 .idea/
 
-
-
-
-
-
 # Editor / dev scratch
 .agent/
 .pytest_cache/

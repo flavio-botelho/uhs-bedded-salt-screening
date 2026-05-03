@@ -4,12 +4,12 @@ Frozen research assumptions from the thesis/paper.
 """
 
 # Depth window for admissible intervals (m, TVDSS)
-MIN_DEPTH = 800.0
-MAX_DEPTH = 2200.0
+MIN_DEPTH = 500.0
+MAX_DEPTH = 2000.0
 
 # Geological constraints
 MAX_INTERLAYER_THICKNESS = 20.0  # continuous non-halite above this segments the interval
-MAX_INSOLUBLES_PERCENT = 40.0  # cavern zone mean insolubles cutoff
+MAX_INSOLUBLES_PERCENT = 35.0  # cavern zone mean insolubles cutoff
 
 # Cavern geometry safety buffers (fractions of diameter D)
 HW_FACTOR = 0.75  # hangwall / roof buffer  (H_roof = 0.75 * D)

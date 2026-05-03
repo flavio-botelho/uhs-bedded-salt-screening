@@ -1,7 +1,9 @@
-"""Scientific constants for the regional favorability workflow.
+"""Default parameters for the regional favorability workflow.
 
-These are frozen research assumptions from the thesis/paper and should not be
-changed without explicit approval. Paths live in ``configs/regional_favorability_config.py``.
+These values define the baseline configuration used to reproduce the results
+reported in the study. They can be modified for testing, sensitivity analyses,
+or adaptation to other datasets. Project-specific paths and run settings live
+in ``configs/regional_favorability_config.py``.
 """
 
 # -----------------------------------------------------------------------------
